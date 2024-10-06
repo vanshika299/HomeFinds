@@ -8,7 +8,7 @@ async function connectDB() {
 
 connectDB()
   .then(() => {
-    console.log("Medgen Database connected successfully");
+    console.log("Homefinds Database connected successfully");
   })
   .catch((error) => {
     console.log("Error connecting to database ", error);
