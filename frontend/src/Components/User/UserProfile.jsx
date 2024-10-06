@@ -17,7 +17,7 @@ const UserProfile = () => {
                                             <img src={user} class="img-radius" alt="User-Profile-Image" />
                                         </div>
                                         <div className='yoho'>
-                                            <h6 class="f-w-600 name">Saksham Agarwal</h6>
+                                            <h6 class="f-w-600 name">vanshika Gupta</h6>
                                         </div>
                                     </div>
                                 </div>
@@ -27,7 +27,7 @@ const UserProfile = () => {
                                         <div class="row">
                                             <div class="col-sm-3">
                                                 <p class="m-b-10 f-w-600">Username</p>
-                                                <h6 class="text-muted f-w-400">saksham1800t</h6>
+                                                <h6 class="text-muted f-w-400">Vanshika</h6>
                                             </div>
                                             <div class="col-sm-3">
                                                 <p class="m-b-10 f-w-600">Email</p>
@@ -42,7 +42,7 @@ const UserProfile = () => {
                                         <div class="row">
                                             <div class="col-sm-6">
                                                 <p class="m-b-10 f-w-600">Address</p>
-                                                <h6 class="text-muted f-w-400">Hindustan college</h6>
+                                                <h6 class="text-muted f-w-400">college</h6>
                                             </div>
                                             <div class="col-sm-2">
                                                 <p class="m-b-10 f-w-600">Pincode</p>
