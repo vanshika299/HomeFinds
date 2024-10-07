@@ -1,13 +1,18 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 import { FaLock, FaUser } from "react-icons/fa";
 import "../../CSS/Login.css";
 
 
 function Login() {
-    const [formData, setFormData] = useState('');
-    const [userName, setUserName] = useState('');
-    const [password, setPassword] = useState('');
+    const [formData, setFormData] = useState({
+        username: '',
+        password:'',
+    });
+    
     const [error, setError] = useState('');
+    
+    const [success, setSuccess] = useState('');
     const handleChange = (e) => {
         setFormData({
             ...formData,
@@ -15,15 +20,28 @@ function Login() {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+        const { username, password } = formData;
         console.log(formData);
 
-        if (!userName || !password) {
+        if (!username || !password) {
             setError('Please fill in both fields');
             return;
         }
-    };
+    
+    try {
+        // Make API request to backend for login
+        const response = await axios.post('http://localhost:8080/users/login', formData); // Assuming your API route is /api/login
+        console.log(response);
+        setSuccess(response.data.message); // Success message from backend
+        setError(''); // Clear error message if any
+    } catch (err) {
+        setError(err.response ? err.response.data.message : "Server error");
+        setSuccess(''); // Clear success message if any
+    }
+};
+
 
     return (
         <>
@@ -54,7 +72,7 @@ function Login() {
             </div>
         </>
     );
-
 }
+
 
 export default Login;
