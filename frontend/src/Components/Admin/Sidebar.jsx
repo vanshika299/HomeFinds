@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { FaBars, FaHome, FaUser } from "react-icons/fa";
 import { FaUserPlus } from "react-icons/fa6";
 import { MdSupervisedUserCircle } from "react-icons/md";
+import { Link } from 'react-router-dom';
 import '../../CSS/Sidebar.css'; // You can add styles in a separate file.
 import profile from '../../Images/profile.jpg';
 
@@ -35,7 +36,7 @@ const Admin = () => {
           <h4 className='h4_sidebar'>ADMIN</h4>
         </div>
         <ul className='ul_sidebar'><hr />
-          <li className='li_sidebar'><a className='a_sidebar' href="#home"><FaHome className="icon_sidebar" /><b>Home</b></a></li><hr />
+          <li className='li_sidebar'><a className='a_sidebar' href="#home"><FaHome className="icon_sidebar" /><Link to="/"><b>Home</b></Link></a></li><hr />
           <li className='li_sidebar'><a className='a_sidebar' href="#about"><FaUserPlus className="icon_sidebar" /><b>Users</b></a></li><hr />
           <li className='li_sidebar'><a className='a_sidebar' href="#services"><MdSupervisedUserCircle className="icon_sidebar" /><b>Buyers</b></a></li><hr />
           <li className='li_sidebar'><a className='a_sidebar' href="#contact"><FaUser className="icon_sidebar" /><b>Sellers</b></a></li><hr />

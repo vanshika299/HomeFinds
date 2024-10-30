@@ -1,8 +1,9 @@
+import axios from 'axios'; // Import axios for API requests
 import React, { useState } from 'react';
 import { FaLock, FaUser } from "react-icons/fa";
 import { IoMdContacts } from "react-icons/io";
 import { MdEmail } from "react-icons/md";
-import axios from 'axios'; // Import axios for API requests
+import { Link } from "react-router-dom";
 import "../../CSS/Signup.css";
 import bg from "../../Images/bg.avif";
 
@@ -36,7 +37,7 @@ function Signup() {
 
         try {
             // Make API request to backend for signup
-            const response = await axios.post('http://localhost:8080/users/signup', formData); // Assuming your API route is /api/signup
+            const response = await axios.post('http://localhost:8000/user/register', formData); // Assuming your API route is /api/signup
             console.log(response);
             setSuccess(response.data.message); // Success message from backend
             setError(''); // Clear error message if any
@@ -135,7 +136,7 @@ function Signup() {
                         <div className="form-group_Signup mt-2">
                             <button className="button_Signup" type="submit">Signup</button>
                         </div>
-                        <h4 className="fs-6"><b>Already have an account? Login</b></h4>
+                        <h4 className="fs-6 text-dark">Already have an account?<Link to="/Login"><u>Login</u></Link> </h4>
                     </form>
                 </div>
             </div>

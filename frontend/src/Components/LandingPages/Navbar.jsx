@@ -18,7 +18,9 @@ function Navbar() {
             <li>|</li>
             <li><Link to="/BuyNow"><b>Services</b></Link></li>
             <li>|</li>
-            <li><Link to="/BuyPage"><b>Contact</b></Link></li>
+            <li><Link to="/ContactUs"><b>Contact</b></Link></li>
+            <li><Link to="/ProductAdd"><b>AddProduct</b></Link></li>
+            <li><Link to="/BuyPage"><b>Admin</b></Link></li>
           </ul>
         </div>
         <div>

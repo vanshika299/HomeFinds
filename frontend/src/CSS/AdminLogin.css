@@ -54,7 +54,7 @@
     color: white;
     cursor: pointer;
     background-color: rgb(223, 177, 93);
-    width: 100%;
+    width: 140%;
     font-size: 16px;
 }
 
@@ -62,4 +62,5 @@
     display: flex;
     justify-content: center;
     align-items: center;
+   
 }

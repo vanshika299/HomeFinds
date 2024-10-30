@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../CSS/Buy&RentPage&Donate.css";
 import noImage from "../Images/noImage.jpeg";
 
@@ -56,7 +57,7 @@ export default function DonatePage() {
                             <p>{card.description}</p>
                         </div>
                         <div class="card-bottom_BuyRent">
-                            <button class="btn" style={{ backgroundColor: "rgb(223, 177, 93)" }}>RENT NOW</button>
+                      <Link to ="/BuyNow"><button class="btn" style={{ backgroundColor: "rgb(223, 177, 93)" }}>DONATE NOW</button></Link>
                         </div>
                     </div>
                 ))}

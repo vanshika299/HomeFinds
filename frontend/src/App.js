@@ -5,15 +5,15 @@ import AdminDashboard from './Components/Admin/Dashboard';
 import BuyNow from './Components/BuyNow';
 import BuyPage from './Components/BuyPage';
 import Donate from './Components/Donate';
+import ContactUs from './Components/LandingPages/ContactUs';
 import Home from './Components/LandingPages/Home';
 import ProductAdd from './Components/Product/ProductAdd';
-import RentNow from './Components/RentNow';
 import RentPage from './Components/RentPage';
 import Login from './Components/User/Login';
 import Signup from './Components/User/Signup';
 import UserProfile from './Components/User/UserProfile';
 import UserType from './Components/User/UserType';
-import ContactUs from './Components/LandingPages/ContactUs';
+
 
 function App() {
   const router = createBrowserRouter([
@@ -22,9 +22,10 @@ function App() {
       element: <Home />
     },
     {
-      path: '/contactus',
+      path: '/ContactUs',
       element: <ContactUs />
     },
+    
     {
       path: '/buyNow',
       element: <BuyNow />,
@@ -41,10 +42,7 @@ function App() {
       path: '/Signup',
       element: <Signup />,
     },
-    {
-      path: '/RentNow',
-      element: <RentNow />,
-    },
+   
     {
       path: '/UserType',
       element: <UserType />,

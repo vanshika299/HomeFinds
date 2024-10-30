@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import '../../CSS/AdminLogin.css';
 
 export default function AdminLogin() {
@@ -25,9 +26,9 @@ export default function AdminLogin() {
                         placeholder="Enter your Password" required />
 
                     <div class="wrap_AdminLogin">
-                        <button className='button_AdminLogin' type="submit">
+                        <Link to="/AdminDashboard"><button className='button_AdminLogin' type="submit">
                             Submit
-                        </button>
+                        </button></Link>
                     </div>
                 </form>
             </div>

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { FaLock, FaUser } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 import "../../CSS/Login.css";
 
 function Login() {
@@ -102,7 +103,7 @@ function Login() {
                             {loading ? 'Logging in...' : 'Login'}
                         </button>
                     </div>
-                    <h4 className="fs-6"><b>Don't have an account? SignUp</b></h4>
+                    <h4 className="fs-6 text-dark"><b>Don't have an account?</b><Link to="/Signup"><u>SignUp</u></Link></h4>
                 </form>
             </div>
         </div>
