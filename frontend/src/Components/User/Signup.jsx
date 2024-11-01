@@ -8,34 +8,7 @@ import { Link } from "react-router-dom";
 import "../../CSS/Signup.css";
 import bg from "../../Images/bg.avif";
 
-// function Signup() {
-//     const [formData, setFormData] = useState({
-//         username: '',
-//         name: '',
-//         email: '',
-//         contact: '',
-//         password: ''
-//     });
-//     const [error, setError] = useState('');
-//     const [success, setSuccess] = useState('');
 
-//     const handleChange = (e) => {
-//         setFormData({
-//             ...formData,
-//             [e.target.name]: e.target.value,
-//         });
-//     };
-
-//     const handleSubmit = async (e) => {
-//         e.preventDefault();
-//         const { username, name, email, contact, password } = formData;
-
-//         // Simple form validation
-//         if (!username || !name || !email || !contact || !password) {
-//             setError('All fields are required');
-//             return;
-//         }
-// Helper function to validate form fields
 function Signup() {
     const [formData, setFormData] = useState({
         username: '',
@@ -65,7 +38,7 @@ const validateFormData = (formData) => {
 
      
    
-//No error
+
 return '';
 };
 const handleChange = (e) => {
@@ -77,14 +50,14 @@ const handleChange = (e) => {
 const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Validate form data
+   
     const validationError = validateFormData(formData);
     if (validationError) {
         setError(validationError);
         return;
     }
 
-    setLoading(true); // Start loading
+    setLoading(true); 
     try {
         const response = await axios.post('http://localhost:8000/user/register', formData);
         setSuccess(response.data.message);
@@ -95,26 +68,15 @@ const handleSubmit = async (e) => {
             : "An unexpected error occurred. Please try again later.";
         setError(errorMessage);
         setSuccess('');
-        // setError(err.response ? err.response.data.message : "Server error");
-        // setSuccess('');
+      
     } finally {
-        setLoading(false); // End loading
+        setLoading(false); 
     }
 };
 
 
 
 
-        // try {
-        //     // Make API request to backend for signup
-        //     const response = await axios.post('http://localhost:8000/user/register', formData); // Assuming your API route is /api/signup
-        //     console.log(response);
-        //     setSuccess(response.data.message); // Success message from backend
-        //     setError(''); // Clear error message if any
-        // } catch (err) {
-        //     setError(err.response ? err.response.data.message : "Server error");
-        //     setSuccess(''); // Clear success message if any
-        // }
     
     return (
         <>

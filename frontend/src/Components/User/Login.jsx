@@ -10,10 +10,9 @@ function Login() {
         password: ''
     });
     const [error, setError] = useState('');
-    const [loading, setLoading] = useState(false); // For loading state
-    const [success, setSuccess] = useState(false); // Success state
+    const [loading, setLoading] = useState(''); 
+    const [success, setSuccess] = useState(false);
 
-    // Handle input change
     const handleChange = (e) => {
         setFormData({
             ...formData,
@@ -21,13 +20,13 @@ function Login() {
         });
     };
 
-    // Handle form submission
+   
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setLoading(true); // Start loading when form is submitted
-        setError(''); // Clear any previous error message
+        // setLoading(true); 
+         setError(''); 
 
-        // Validate input fields
+       
         if (!formData.username || !formData.password) {
             setError('Please fill in both fields');
             setLoading(false);
@@ -35,26 +34,24 @@ function Login() {
         }
 
         try {
-            // Send the formData to the backend API
-            const response = await axios.post('http://localhost:8080/users/login', formData); // Update this URL to your actual API endpoint
-
-            // Handle success response
+            
+            const response = await axios.post('http://localhost:8000/auth/login', formData); 
+            console.log('Response:', response.data);
             if (response.data.success) {
-                setSuccess(true); // Set success state to true
-                // You can redirect or store the token here
-                console.log('Login successful', response.data);
-                // For example, storing the token in local storage:
-                localStorage.setItem('token', response.data.token);
-                // You can redirect to a dashboard or home page:
-                window.location.href = '/dashboard';
+                setSuccess(true); 
+                localStorage.setItem('token', response.data.token); 
+                console.log('Login successful');
+                
+              
+            
             } else {
                 setError(response.data.message || 'Login failed. Please try again.');
             }
         } catch (err) {
-            // Handle error from API
+      
             setError(err.response?.data?.message || 'Error logging in. Please try again later.');
         } finally {
-            setLoading(false); // Stop loading after API response
+            setLoading(false); 
         }
     };
 
@@ -63,7 +60,7 @@ function Login() {
             <div className="login-container_Login " >
                 <form onSubmit={handleSubmit}>
                     <h2 className="mb-4">WELCOME!</h2>
-                    {error && <p className="error-message">{error}</p>} {/* Display error if any */}
+                    {error && <p className="error-message">{error}</p>} 
                     <div className="form-group">
                         <label className="label_Login">
                             <FaUser className="icon_Login" /><b>Username</b>
