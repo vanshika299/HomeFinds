@@ -10,8 +10,8 @@ function Login() {
         password: ''
     });
     const [error, setError] = useState('');
-    const [loading, setLoading] = useState(''); 
-    const [success, setSuccess] = useState(false);
+    const [loading, setLoading] = useState(false); 
+
 
     const handleChange = (e) => {
         setFormData({
@@ -23,7 +23,7 @@ function Login() {
    
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // setLoading(true); 
+        setLoading(true); 
          setError(''); 
 
        
@@ -36,12 +36,12 @@ function Login() {
         try {
             
             const response = await axios.post('http://localhost:8000/auth/login', formData); 
-            console.log('Response:', response.data);
-            if (response.data.success) {
-                setSuccess(true); 
+            console.log('Response:', response);
+            if (response.data.token) {
+               
                 localStorage.setItem('token', response.data.token); 
                 console.log('Login successful');
-                
+        
               
             
             } else {
