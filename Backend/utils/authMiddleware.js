@@ -8,9 +8,11 @@ module.exports.authenticateToken=async(req,res,next)=>{
 
     }
     const[bearer, token]= authHeader.split(" ");
-    if(bearer!=="Bearer"|| !token){
+    if(bearer !=="Bearer"|| !token){
         return res.status(401).json({message:"unauthorized:Invalid token format"});
     }
+    console.log("Using secretKey:", secretKey); // Log the secret key to check consistency
+    console.log("Incoming token:", token);
     jwt.verify(token,secretKey, (err, user)=>{
        if(err){
         console.error("Token verification error:", err.message);

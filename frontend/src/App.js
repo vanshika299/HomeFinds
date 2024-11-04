@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import AboutUs from './Components/AboutUs';
 import AdminLogin from './Components/Admin/AdminLogin';
 import AdminDashboard from './Components/Admin/Dashboard';
+import Page from './Components/Admin/Page';
 import BuyNow from './Components/BuyNow';
 import BuyPage from './Components/BuyPage';
 import Donate from './Components/Donate';
@@ -74,7 +75,11 @@ function App() {
     {
       path:'/Donate',
       element:<Donate/>
-    }
+    },
+    {
+      path:'/Page',
+      element:<Page/>
+    },
   ])
   return (
     <>

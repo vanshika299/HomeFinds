@@ -1,7 +1,21 @@
-const User=require("../models/users");
+// const User=require("../models/users");
 
-async function getUsers(){
-      const users=await User.find({});
-};
+// async function getUsers(){
+//       const users=await User.find({});
+// };
 
-exports.module={getUsers};
+// module.exports={getUsers};
+const User = require("../models/users");
+
+async function getUsers() {
+    try {
+        const users = await User.find({});
+        return users;
+    } catch (error) {
+        console.error("Error fetching users:", error);
+        throw error; // Re-throw the error to handle it in the calling function
+    }
+}
+
+module.exports = { getUsers };
+ 

@@ -1,5 +1,5 @@
 const jwt=require("jsonwebtoken");
-const { secretKey } =require("../configs/jwtConfig");
+const secretKey  =require("../configs/jwtConfig");
 
 function generateToken(user){
     const payload={

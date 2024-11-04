@@ -6,7 +6,7 @@ async function createAdminAccount(){
         const existingAdmin= await User.findOne({email:"admin@test.com"});
         if(!existingAdmin){
              const newAdmin= new User({
-                email:"admin2test.com",
+                email:"admin@test.com",
                 name:"admin",
                 username:"admin",
                 contact:12345678,

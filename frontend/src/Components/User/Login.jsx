@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { FaLock, FaUser } from "react-icons/fa";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import "../../CSS/Login.css";
 
 function Login() {
@@ -11,6 +11,7 @@ function Login() {
     });
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false); 
+    const navigate=useNavigate();
 
 
     const handleChange = (e) => {
@@ -41,6 +42,7 @@ function Login() {
                
                 localStorage.setItem('token', response.data.token); 
                 console.log('Login successful');
+                navigate('/');
         
               
             

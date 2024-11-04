@@ -37,7 +37,7 @@ const Admin = () => {
         </div>
         <ul className='ul_sidebar'><hr />
           <li className='li_sidebar'><a className='a_sidebar' href="#home"><FaHome className="icon_sidebar" /><Link to="/"><b>Home</b></Link></a></li><hr />
-          <li className='li_sidebar'><a className='a_sidebar' href="#about"><FaUserPlus className="icon_sidebar" /><b>Users</b></a></li><hr />
+          <li className='li_sidebar'><a className='a_sidebar' href="#about"><FaUserPlus className="icon_sidebar" /><Link to="/Page"><b>Users</b></Link></a></li><hr />
           <li className='li_sidebar'><a className='a_sidebar' href="#services"><MdSupervisedUserCircle className="icon_sidebar" /><b>Buyers</b></a></li><hr />
           <li className='li_sidebar'><a className='a_sidebar' href="#contact"><FaUser className="icon_sidebar" /><b>Sellers</b></a></li><hr />
         </ul>
