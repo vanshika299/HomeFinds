@@ -31,10 +31,12 @@
 
 // Controller function to add a new product
 const addProduct = async (req, res) => {
+  console.log("Request Body:", req.body);
   try {
     const { productName, description, detail, price, address } = req.body;
+    
 
-    // Create a new product document
+   
     const newProduct = new Product({
       productName,
       description,
@@ -42,11 +44,13 @@ const addProduct = async (req, res) => {
       price,
       address
     });
-
-    // Save the product to the database
+    if (!productName || !description || !detail || !price || !address) {
+      return res.status(400).json({ message: "Missing required fields" });
+  }
+   
     const savedProduct = await newProduct.save();
 
-    // Return success response
+  
     res.status(201).json({
       message: 'Product added successfully',
       product: savedProduct
@@ -56,5 +60,5 @@ const addProduct = async (req, res) => {
   }
 };
 
-module.exports = addProduct;
+module.exports = {addProduct};
 
