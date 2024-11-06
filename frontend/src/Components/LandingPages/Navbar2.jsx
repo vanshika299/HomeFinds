@@ -1,10 +1,20 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../../CSS/Navbar2.css'; // Import CSS for additional styling
 import logo from '../../Images/logo.png';
 import profile from '../../Images/profile.jpg';
 
 function Navbar() {
+    const token = localStorage.getItem('token'); 
+    
+    const navigate = useNavigate(); 
+ 
+    const handleLogout = () => { 
+        localStorage.removeItem('token'); 
+       
+        navigate('/'); 
+        alert('Logged out successfully :('); 
+    };
     return ( 
         <nav className="navbar_Navbar2">    
             <div className="navbar-container_Navbar2">
@@ -27,8 +37,11 @@ function Navbar() {
                 </div>
                 <div>
                     <ul className="d-flex right_Navbar2">
-                        <li><Link to="/Login"><button className='login_Navbar2'><b>LogIn</b></button></Link></li>
+                        {token?<li><Link><button className='login_Navbar2' onClick={handleLogout}><b>Logout</b></button></Link></li>:<> <li><Link to="/Login"><button className='login_Navbar2'><b>LogIn</b></button></Link></li>
+                       
                         <li><Link to="/Signup"><button className="signup_Navbar2 login_Navbar2"><b>SignUp</b></button></Link></li>
+                        </>
+                        }
                         <li><Link to="/UserProfile"><img src={profile} className="image_Navbar2"></img></Link></li>
                     </ul>
                 </div>

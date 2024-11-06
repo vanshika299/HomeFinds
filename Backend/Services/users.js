@@ -7,7 +7,7 @@
 // module.exports={getUsers};
 const User = require("../models/users");
 
-async function getUsers() {
+module.exports.getUsers=async ()=> {
     try {
         const users = await User.find({});
         return users;
@@ -17,5 +17,5 @@ async function getUsers() {
     }
 }
 
-module.exports = { getUsers };
+
  

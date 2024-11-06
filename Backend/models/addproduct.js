@@ -24,6 +24,6 @@ const productAddSchema = new mongoose.Schema({
   }
 });
 
-userSchema.plugin(passportLocalMongoose);
+//userSchema.plugin(passportLocalMongoose);
 
 module.exports = mongoose.model("User", productAddSchema);

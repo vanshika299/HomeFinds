@@ -1,6 +1,6 @@
 const userService=require("../Services/users");
 
-async function getUsers(req,res){
+module.exports.getUsers=async(req,res)=>{
     try{
          const users=await userService.getUsers();
          res.json(users);
@@ -11,4 +11,4 @@ async function getUsers(req,res){
     }
 };
 
-module.exports={getUsers};
+

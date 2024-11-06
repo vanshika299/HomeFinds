@@ -22,3 +22,9 @@ module.exports.authenticateToken=async(req,res,next)=>{
        next();
     })
 }
+
+module.exports.verifyToken=(token)=>{
+     return jwt.verify(token,secretKey);
+}
+
+

@@ -9,6 +9,7 @@ const userRoute=require("./routes/users");
 const app=express();
 const PORT=8000;
 
+const productRoute = require('./routes/addproduct');
 app.use(bodyParser.json());
 app.use(cors());
 
@@ -19,6 +20,7 @@ app.use(express.urlencoded({extended:true}));
 app.use("/user",signupRoute);
 app.use("/auth",loginRoute);
 app.use("/api",userRoute);
+app.use("/add",productRoute);
 
 app.listen(PORT, ()=>{
   console.log(`Server is running on :${PORT}`);
