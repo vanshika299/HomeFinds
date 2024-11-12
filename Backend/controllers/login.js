@@ -14,7 +14,7 @@ module.exports.login = async (req, res) => {
       }
 
 };
-//console.log("login:", login);
+
 
 module.exports.refreshToken= async (req, res) => {
   try{
@@ -30,5 +30,4 @@ module.exports.refreshToken= async (req, res) => {
   }
 
 };
- // Should log function, not undefined
-//console.log("refreshToken:", refreshToken);
+ 

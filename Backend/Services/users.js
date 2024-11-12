@@ -5,7 +5,7 @@
 // };
 
 // module.exports={getUsers};
-const User = require("../models/users");
+const User = require("../models/Users");
 
 module.exports.getUsers=async ()=> {
     try {

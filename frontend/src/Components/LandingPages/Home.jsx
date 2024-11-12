@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Link } from 'react-router-dom';
 import { useTypewriter } from "react-simple-typewriter";
 import "../../CSS/Home.css";
@@ -6,11 +6,11 @@ import newbg from "../../Images/Bghome.jpg";
 import buy from "../../Images/srBuy.jpeg";
 import donate from "../../Images/srDonate.jpeg"; // Make sure the image path is correct
 import rent from "../../Images/srRent.jpeg";
-import sell from "../../Images/srSell.jpeg";
 import Footer from "./Footer";
 import Navbar2 from "./Navbar2";
 
 export default function Home() {
+    const servicesRef = useRef(null);
 
     const [text2] = useTypewriter({
         words: ["Buy", "Rent", "Sell", "Donate"],
@@ -42,7 +42,7 @@ export default function Home() {
                     </div>
                 </div>
                 
-                <div className="mt">
+                <div className="mt" ref={servicesRef} id="services-section">
                    <h4 className="text-secondary ms-5 lol sizeText_Home"> SERVICES WE <b style={{ color: "rgb(223, 177, 93)" }}> PROVIDE.</b></h4>
                 </div>
 
@@ -56,12 +56,12 @@ export default function Home() {
 
                    
 
-                    <div className="card_Home w-25 " style={{ backgroundColor: "white", height: "500px", paddingTop: "30px",marginRight:"25px" }}>
+                    {/* <div className="card_Home w-25 " style={{ backgroundColor: "white", height: "500px", paddingTop: "30px",marginRight:"25px" }}>
                         <img className="card-img-top object-fit-contain rounded-4 p-2" alt="Sell" src={sell} />
                         <div className="card-body">
                             <p className="card-text fs-5">Sell your items to our trusted buyers and get the best deals.</p>
                         </div>
-                    </div>
+                    </div> */}
 
                     <div className="card_Home w-25" style={{ backgroundColor: "white", height: "500px", paddingTop: "30px" }}>
                         <img className="card-img-top object-fit-contain rounded-4 p-2" alt="Donate" src={donate} />

@@ -42,6 +42,7 @@ function Login() {
                
                 localStorage.setItem('token', response.data.token); 
                 console.log('Login successful');
+                alert('Login successful');
                 navigate('/');
         
               

@@ -10,6 +10,9 @@ const app=express();
 const PORT=8000;
 
 const productRoute = require('./routes/addproduct');
+
+
+
 app.use(bodyParser.json());
 app.use(cors());
 
@@ -21,6 +24,16 @@ app.use("/user",signupRoute);
 app.use("/auth",loginRoute);
 app.use("/api",userRoute);
 app.use("/add",productRoute);
+app.use("/delete",productRoute);
+app.use("/update",productRoute);
+app.use("/fetch",productRoute);
+app.use("/fetch",userRoute);
+app.use("/update",userRoute);
+app.use("/delete",userRoute);
+app.use("/create",userRoute);
+app.use("/buy",productRoute);
+app.use("/donate",productRoute);
+app.use("/rent",productRoute);
 
 app.listen(PORT, ()=>{
   console.log(`Server is running on :${PORT}`);

@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { FaLock, FaUser } from "react-icons/fa";
 import { IoMdContacts } from "react-icons/io";
 import { MdEmail } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 import "../../CSS/Signup.css";
 import bg from "../../Images/bg.avif";
 
@@ -20,6 +20,7 @@ function Signup() {
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
     const [loading, setLoading] = useState(false);
+    const navigate=useNavigate();
 const validateFormData = (formData) => {
     const { username, name, email, contact, password } = formData;
 
@@ -62,6 +63,7 @@ const handleSubmit = async (e) => {
         const response = await axios.post('http://localhost:8000/user/register', formData);
         setSuccess(response.data.message);
         setError('');
+        navigate('/login');
     } catch (err) {
         const errorMessage = err.response && err.response.data && err.response.data.message
             ? err.response.data.message
@@ -163,11 +165,24 @@ const handleSubmit = async (e) => {
                                 required
                             />
                         </div>
+                        <div className="form-group_Signup">
+                            <label className="label_Signup"><MdEmail className="icon_Signup" /><b>Address:</b></label>
+                            <input
+                                className="input_Signup"
+                                type="Address"
+                                name="Address"
+                                placeholder="Address"
+                                value={formData.address}
+                                onChange={handleChange}
+                                required
+                            />
+                        </div>
 
                         <div className="form-group_Signup mt-2">
                             <button className="button_Signup" type="submit">Signup</button>
                         </div>
-                        <h4 className="fs-6 text-dark">Already have an account?<Link to="/Login"><u>Login</u></Link> </h4>
+                      
+                        {/* <h4 className="fs-6 text-dark">Already have an account?<Link to="/Login"><u>Login</u></Link> </h4> */}
                     </form>
                 </div>
             </div>

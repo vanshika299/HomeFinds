@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-//const passportLocalMongoose = require("passport-local-mongoose");
+
 
 const productAddSchema = new mongoose.Schema({
   productName: {
@@ -10,7 +10,7 @@ const productAddSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  detail: {
+  productFor: {
     type: String,
     required: true,
   },
@@ -21,9 +21,13 @@ const productAddSchema = new mongoose.Schema({
   address: {
     type: String,
     required: true,
+  },
+  selectCategory: {
+    type: String,
+    required: true,
   }
 });
 
-//userSchema.plugin(passportLocalMongoose);
+
 
 module.exports = mongoose.model("Product", productAddSchema);

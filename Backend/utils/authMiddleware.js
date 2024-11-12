@@ -18,7 +18,7 @@ module.exports.authenticateToken=async(req,res,next)=>{
         console.error("Token verification error:", err.message);
         return res.status(403).json({message:"forbidden Invalid token"});
        }
-       req.user=user;
+       req.user = user;
        next();
     })
 }

@@ -1,5 +1,6 @@
 .login-container_Signup {
-  max-width: 500px;
+  width: 350px;
+  height:650px;
   margin: 80px;
   padding: 1em;
   background: transparent;
@@ -22,8 +23,8 @@
 }
 
 .button_Signup {
-  width: 90%;
-  height: 50px;
+  width: 120%;
+  height: 35px;
   background: rgb(223, 177, 93);
   border: none;
   border-radius: 40px;
@@ -49,8 +50,8 @@
 }
 
 .input_Signup {
-  width: 90%;
-  height: 50px;
+  width: 120%;
+  height:35px;
 
   border: none;
   outline: none;

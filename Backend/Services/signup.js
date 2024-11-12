@@ -1,6 +1,6 @@
 
 
-const User = require("../models/users");
+const User = require("../models/Users");
 const bcrypt = require("bcrypt");
 
  module.exports.createUser= async(userData)=> {
