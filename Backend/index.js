@@ -3,14 +3,14 @@ const signupRoute= require("./routes/signup");
 const bodyParser=require("body-parser");
 const  cors= require("cors");
 const loginRoute=require("./routes/login");
-const createAdminAccount= require("./Scripts/admin");
+const {createAdminAccount,getBuyProductCount, getNumberOfUsers}= require("./Scripts/admin");
 const userRoute=require("./routes/users");
+
 
 const app=express();
 const PORT=8000;
 
 const productRoute = require('./routes/addproduct');
-
 
 
 app.use(bodyParser.json());
@@ -34,6 +34,9 @@ app.use("/create",userRoute);
 app.use("/buy",productRoute);
 app.use("/donate",productRoute);
 app.use("/rent",productRoute);
+app.use("/buyer",productRoute);
+
+
 
 app.listen(PORT, ()=>{
   console.log(`Server is running on :${PORT}`);

@@ -1,7 +1,9 @@
 const  User =require("../models/Users");
+const Product = require('../models/addproduct');
 const bcrypt=require("bcrypt");
+const user=require('../models/Users');
 
-async function createAdminAccount(){
+const  createAdminAccount = async (req,res)=>{
     try{
         const existingAdmin= await User.findOne({email:"admin@test.com"});
         if(!existingAdmin){
@@ -23,4 +25,35 @@ async function createAdminAccount(){
         console.error(error.message);
     }
 }
-module.exports= createAdminAccount;
+
+const getBuyProductCount = async (req, res) => {
+  try {
+    
+    const count = await Product.countDocuments({ productFor: 'Buy' });
+    const count1 = await Product.countDocuments({ productFor: 'Rent' });
+    const count2 = await Product.countDocuments({ productFor: 'Donate' });
+    const userCount = await user.countDocuments();
+    
+    
+    res.status(200).json({
+      success: true,
+      count: count,
+      count1:count1,
+      count2:count2,
+      user:userCount
+      
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: 'Error fetching buy product count',
+      error: error.message
+    });
+  }
+};
+
+
+
+
+
+module.exports= {createAdminAccount,getBuyProductCount};

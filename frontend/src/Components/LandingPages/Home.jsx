@@ -42,7 +42,7 @@ export default function Home() {
                     </div>
                 </div>
                 
-                <div className="mt" ref={servicesRef} id="services-section">
+                <div className="mt" id="services-section">
                    <h4 className="text-secondary ms-5 lol sizeText_Home"> SERVICES WE <b style={{ color: "rgb(223, 177, 93)" }}> PROVIDE.</b></h4>
                 </div>
 

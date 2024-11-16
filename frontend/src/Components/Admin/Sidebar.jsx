@@ -2,7 +2,10 @@
 import React, { useState } from 'react';
 import { FaBars, FaHome, FaUser } from "react-icons/fa";
 import { FaUserPlus } from "react-icons/fa6";
-import { MdSupervisedUserCircle } from "react-icons/md";
+
+import { FaCartPlus } from "react-icons/fa6";
+
+import { MdProductionQuantityLimits } from "react-icons/md";
 import { Link } from 'react-router-dom';
 import '../../CSS/Sidebar.css'; // You can add styles in a separate file.
 import profile from '../../Images/profile.jpg';
@@ -38,8 +41,9 @@ const Admin = () => {
         <ul className='ul_sidebar'><hr />
           <li className='li_sidebar'><a className='a_sidebar' href="#home"><FaHome className="icon_sidebar" /><Link to="/"><b>Home</b></Link></a></li><hr />
           <li className='li_sidebar'><a className='a_sidebar' href="#about"><FaUserPlus className="icon_sidebar" /><Link to="/Page"><b>Users</b></Link></a></li><hr />
-          <li className='li_sidebar'><a className='a_sidebar' href="#services"><MdSupervisedUserCircle className="icon_sidebar" /><b>Buyers</b></a></li><hr />
-          <li className='li_sidebar'><a className='a_sidebar' href="#contact"><FaUser className="icon_sidebar" /><b>Sellers</b></a></li><hr />
+          <li className='li_sidebar'><a className='a_sidebar' href="#services"><MdProductionQuantityLimits className="icon_dash" /><Link to="/buyProducts"><b>Buy Product</b></Link></a></li><hr />
+          <li className='li_sidebar'><a className='a_sidebar' href="#contact"><FaCartPlus className="icon_dash" /><Link to="/donateProducts"><b>Donate Product</b></Link></a></li><hr />
+          <li className='li_sidebar'><a className='a_sidebar' href="#contact"><FaUser className="icon_sidebar" /><Link to="/rentProducts"><b>Rent Product</b></Link></a></li><hr />
         </ul>
       </div>
     </div>

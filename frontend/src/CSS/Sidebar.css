@@ -28,13 +28,14 @@
 
 .li_sidebar {
   margin: 40px 0px 20px 2rem;
+  height:15px;
 
 }
 
 .a_sidebar {
   color: white;
   text-decoration: none;
-  font-size: 20px;
+  font-size: 15px;
   margin-top: .5rem;
 }
 

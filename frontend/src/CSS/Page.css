@@ -1,0 +1,64 @@
+
+.box_Page {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+
+.table_Page {
+    width: 50%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #a7e3eb;
+    margin-left:25%;
+}
+
+
+.table_th_Page {
+    background-color: #edf4f5;
+    color: #333;
+    font-weight: bold;
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+
+}
+
+
+.table_td_Page {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.table_tr_Page:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+
+
+
+
+.heading_Para {
+    font-size: 24px;
+    color: #333;
+    text-align:center;
+}
+
+.para_Page {
+    color: #888;
+    font-size: 16px;
+}
+.del_Page{
+    color:rgb(255, 196, 148);
+    width:100px;
+    height:40px;
+    color:black;
+    border-radius: 25px;
+    margin:5px 5px 5px;
+}
+.del_Page:hover{
+    background-color:rgb(223, 177, 93);
+    
+   
+}

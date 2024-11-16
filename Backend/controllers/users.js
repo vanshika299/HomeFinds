@@ -39,8 +39,7 @@ module.exports.updateUser = async (req, res) => {
             return res.status(404).json({ message: "User not found" });
         }
 
-        // UserId,
-        // { username, name , email,contact,password },
+       
         if (req.body.username) user.username = req.body.username;
         if(req.body.name) user.name=req.body.name;
         if (req.body.email) user.email = req.body.email;
@@ -87,3 +86,4 @@ module.exports.createUser = async (req, res) => {
         res.status(400).json({ message: error.message });
     }
 };
+

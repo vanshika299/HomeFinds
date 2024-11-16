@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import "../../CSS/Page.css";
+import Sidebar from './Sidebar';
 
 const Page=()=>{
 
@@ -35,21 +37,39 @@ const Page=()=>{
     },[token,navigate]);
     
     return (
-        <div>
-            <h2>User List</h2>
-            <ul>
-                {users && users.length > 0 ? (
-                    users.map((user) => (
-                        <li key={user.id}>
-                            {user.name} - {user.email}
-                        </li>
-                    ))
-                ) : (
-                    <p>No users found.</p>
-                )}
-            </ul>
-        </div>
-    );
+     
+    <div >
+    <div>
+        <Sidebar />
+    </div>
+    <div className="box_Page">
+    <h2 className="heading_Para"><b><u>User List</u> </b></h2>
+    {users && users.length > 0 ? (
+        <table className="table_Page">
+            <thead>
+                <tr className="table_tr_Page">
+                    <th className="table_th_Page">Name</th>
+                    <th className="table_th_Page">Email</th>
+                    <th className="table_th_Page">Delete your user</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                {users.map((user) => (
+                    <tr className='table_tr_Page' key={user.id}>
+                        <td className="table_td_Page">{user.name}</td>
+                        <td className="table_td_Page">{user.email}</td>
+                        <button className="del_Page" >Delete</button>
+                    </tr>
+                ))}
+            </tbody>
+        </table>
+    ) : (
+        <p className="para_Page"> No users found.</p>
+    )}
+    </div>
     
+</div>);
+
 }
 export default Page;

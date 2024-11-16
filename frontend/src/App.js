@@ -1,8 +1,11 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import AboutUs from './Components/AboutUs';
 import AdminLogin from './Components/Admin/AdminLogin';
+import BuyProducts from './Components/Admin/BuyProducts';
 import AdminDashboard from './Components/Admin/Dashboard';
+import DonateProducts from './Components/Admin/DonateProducts';
 import Page from './Components/Admin/Page';
+import RentProducts from './Components/Admin/RentProducts';
 import BuyNow from './Components/BuyNow';
 import BuyPage from './Components/BuyPage';
 import Donate from './Components/Donate';
@@ -79,6 +82,18 @@ function App() {
     {
       path:'/Page',
       element:<Page/>
+    },
+    {
+      path:'/BuyProducts',
+      element:<BuyProducts/>
+    },
+    {
+      path:'/DonateProducts',
+      element:<DonateProducts/>
+    },
+    {
+      path:'/RentProducts',
+      element:<RentProducts/>
     },
   ])
   return (
