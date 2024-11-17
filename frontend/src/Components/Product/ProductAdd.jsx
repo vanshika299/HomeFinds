@@ -6,6 +6,7 @@ import cart from "../../Images/cart.jpg";
 
 
 function ProductAdd() {
+    const token = localStorage.getItem('token');
     const [formData, setFormData] = useState({
         productName:'',
         description:'',
@@ -30,21 +31,14 @@ function ProductAdd() {
 
         try {
            
-            const response = await axios.post("http://localhost:8000/add/products", formData);
-            console.log("Product added successfully:", response.data);
-
-            // setFormData({
-            //     productName: '',
-            //     description: '',
-            //     productFor: '',
-            //     price: '',
-            //     address: '',
-            //     selectCategory:''
-            // });
-
-           
-            alert("Product added successfully!");
-        } catch (error) {
+            const response = await axios.post("http://localhost:8000/add/products", formData,{
+                headers:{ 
+                    Authorization: `Bearer ${token}`, 
+                    
+                }})
+                console.log("Product added successfully:", response.data);
+                alert("Product added successfully!");
+            } catch (error) {
             console.error("Error adding product:",error.response ? error.response.data : error.message );
             alert("Error adding product, please try again.");
         }

@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
 
+
 const productAddSchema = new mongoose.Schema({
   productName: {
     type: String,
@@ -25,7 +26,13 @@ const productAddSchema = new mongoose.Schema({
   selectCategory: {
     type: String,
     required: true,
+  },
+  customer:{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "user", 
+    required: true,
   }
+
 });
 
 

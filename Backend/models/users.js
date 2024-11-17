@@ -1,4 +1,5 @@
 const mongoose=require("../configs/dbconfig");
+//const Products =require("./addproduct");
 
 const userSchema=new mongoose.Schema({
   username:{
@@ -21,8 +22,13 @@ const userSchema=new mongoose.Schema({
     type:String,
     required:true,
   },
+  products: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Product", 
+    }],
   
 
 });
 
-module.exports=mongoose.model("user",userSchema);
+module.exports= mongoose.model("user", userSchema);

@@ -1,4 +1,5 @@
 const express = require("express");
+const auth=require("../utils/authMiddleware");
 
 const router = express.Router();
 const addProduct = require("../controllers/addProduct");
@@ -12,7 +13,7 @@ const getBuyProductCount=require("../Scripts/admin");
 
 
 
-router.post("/products",addProduct.addProduct);
+router.post("/products",addProduct.addProduct,auth.authenticateToken);
 router.post("/deleteProducts/:id",deleteProduct.deleteProduct);
 router.put("/updateProducts/:id", updateProduct.updateProduct);
 router.get("/fetchProducts",fetchAllProducts.fetchAllProducts);

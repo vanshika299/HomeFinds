@@ -1,5 +1,6 @@
 const userService=require("../Services/users");
 const User =require("../models/Users");
+const Product = require("../models/addproduct");
 const bcrypt = require('bcrypt'); 
 
 module.exports.getUsers=async(req,res)=>{
@@ -86,4 +87,17 @@ module.exports.createUser = async (req, res) => {
         res.status(400).json({ message: error.message });
     }
 };
+ 
+
+module.exports.getProductsByUser =async(req,res)=>{
+  try {
+    const userId = req.user.id;
+    const products = await Product.find({ user: userId }).populate("user", "username email");
+    return products;
+  } catch (error) {
+    console.error("Error fetching products:", error);
+    throw error;
+  }
+}
+
 

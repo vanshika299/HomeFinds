@@ -11,6 +11,6 @@ router.get("/user",authMiddleware.authenticateToken, userController.getUsersById
 router.put("/users/:id",userController.updateUser);
 router.post("/users/:id",userController.deleteUser);
 router.post("/users",userController.createUser);
-
+router.get("/Users",authMiddleware.authenticateToken,userController.getProductsByUser);
 
 module.exports=router;

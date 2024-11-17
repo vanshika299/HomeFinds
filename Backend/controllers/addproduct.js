@@ -1,10 +1,10 @@
 
 const Product = require('../models/addproduct');
-
-
+const UserModel =require('../models/Users');
 const addProduct = async (req, res) => {
   
   try {
+    const userId=req.user.id;
     const { productName, description, productFor, price, address,selectCategory } = req.body;
     const newProduct = new Product({
       productName,
@@ -12,7 +12,8 @@ const addProduct = async (req, res) => {
       productFor,
       price,
       address,
-      selectCategory
+      selectCategory,
+      customer:userId
     });
     console.log("Request Body:", req.body);
     if (!productName || !description || !productFor || !price || !address || !selectCategory) {
@@ -20,6 +21,7 @@ const addProduct = async (req, res) => {
   }
    
     const savedProduct = await newProduct.save();
+    await UserModel.findByIdAndUpdate(userId, { $push: { products: savedProduct._id } });
       res.status(201).json({
       message: 'Product added successfully',
       product: savedProduct

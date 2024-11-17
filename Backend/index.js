@@ -35,6 +35,7 @@ app.use("/buy",productRoute);
 app.use("/donate",productRoute);
 app.use("/rent",productRoute);
 app.use("/buyer",productRoute);
+app.use("/users",userRoute);
 
 
 

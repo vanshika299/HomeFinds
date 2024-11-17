@@ -4,7 +4,7 @@
 const userModel = require('../models/Users'); 
 const bcrypt = require('bcrypt'); 
 const { generateToken } = require('../utils/jwtUtils'); 
-const verifyToken = require('../utils/authMiddleware'); 
+const {verifyToken }= require('../utils/authMiddleware'); 
  
 async function login(username, password) { 
     try { 
@@ -29,7 +29,7 @@ async function login(username, password) {
  
 async function refreshToken(oldToken) { 
     try { 
-        const decodedToken = verifyToken.verifyToken(oldToken); 
+        const decodedToken = verifyToken(oldToken); 
         console.log("Decoded token", decodedToken); 
         const user = await userModel.findById(decodedToken.id); 
         if (!user) { 
