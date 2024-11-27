@@ -13,7 +13,7 @@ const addProduct = async (req, res) => {
       price,
       address,
       selectCategory,
-      customer:userId
+      customer: userId
     });
     console.log("Request Body:", req.body);
     if (!productName || !description || !productFor || !price || !address || !selectCategory) {
@@ -55,28 +55,17 @@ const deleteProduct = async (req, res) => {
 
 
 const updateProduct = async (req, res) => {
-  const productId = req.params.id;
-  const { productName, description,ProductFor,price,address,SelectCategory } = req.body;
-
-  
-
+ try {
+    const productId = req.params.id;
+  const productData = req.body;
   if (!productId) {
     return res.status(400).json({ message: "Missing required product ID" });
   }
-
-  try {
-   
-    const updatedProduct = await Product.findByIdAndUpdate(
-      
-      productId,
-      { productName, description , detail,price,address },
-     
-    );
-
+  const updatedProduct = await Product.findByIdAndUpdate
+  (productId, productData, { new: true, runValidators: true });
     if (!updatedProduct) {
       return res.status(404).json({ message: "Product not found" });
     }
-
     res.status(200).json({ message: "Product updated successfully", product: updatedProduct });
   } catch (error) {
     res.status(500).json({ message: "Failed to update product", error: error.message });
@@ -137,9 +126,20 @@ const rentProduct = async (req, res) => {
       res.status(500).json({ message: 'Server error', error: error.message });
   }
 };
+const getProductById = async (req, res) => {
+  try {
+      const id = req.params.id;
+      const product = await Product.findById(id).populate('customer', 'username email contact address ');
+      if (!product) {
+          return res.status(404).json({ error: "Product not found" });
+      }
+      res.json({ product: product });
+  } catch (error) {
+      res.status(400).json({ error: "Failed to get product", details: error.message });
+  }
+};
 
 
 
-
-module.exports = {addProduct,deleteProduct, updateProduct,fetchAllProducts,buyProduct,donateProduct,rentProduct};
+module.exports = {addProduct,deleteProduct, updateProduct,fetchAllProducts,buyProduct,donateProduct,rentProduct,getProductById};
 

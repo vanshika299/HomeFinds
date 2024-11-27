@@ -1,7 +1,7 @@
- import axios from 'axios'; // Import axios for API requests
-import React, { useState } from 'react';
+import axios from 'axios'; // Import axios for API requests
+import React, { useEffect, useState } from 'react';
 
-import { FaLock, FaUser } from "react-icons/fa";
+import { FaUser } from "react-icons/fa";
 import { IoMdContacts } from "react-icons/io";
 import { MdEmail } from "react-icons/md";
 import { useNavigate } from 'react-router-dom';
@@ -9,13 +9,14 @@ import "../../CSS/Signup.css";
 import bg from "../../Images/bg.avif";
 
 
-function Signup() {
+function UpdateUser() {
+    const token=localStorage.getItem('token');
     const [formData, setFormData] = useState({
         username: '',
         name: '',
         email: '',
         contact: '',
-        password: '',
+        
         address:''
     });
     const [error, setError] = useState('');
@@ -49,34 +50,72 @@ const handleChange = (e) => {
         [e.target.name]: e.target.value,
     });
  };
-const handleSubmit = async (e) => {
-    e.preventDefault();
 
-   
-    const validationError = validateFormData(formData);
-    if (validationError) {
-        setError(validationError);
+useEffect(() => {
+    if (!token) {
+        alert('Please login to view your profile');
+       
         return;
     }
 
-    setLoading(true); 
+    const getUser = async () => {
+        try {
+            console.log('Token:', token);
+            const response = await axios.get(
+                "http://localhost:8000/api/userprofile",
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+            );
+            console.log('API Response:', response.data);
+            //setUsers(response.data.user || {});
+            //setCards(response.data.user?.products || []);
+            const user=response.data.user;
+            setFormData({
+                name: user.name,
+                username: user.username,
+                // password:user.password,
+                email: user.email,
+                contact: user.contact,
+                address: user.address,
+                
+            });
+        } catch (err) {
+            console.error(
+                'Error fetching user data:',
+                err.response?.data || err.message
+            );
+        }
+    };
+    getUser();
+}, [token, navigate]);
+
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
-        const response = await axios.post('http://localhost:8000/user/register', formData);
-        setSuccess(response.data.message);
-        setError('');
-        navigate('/login');
+        const response = await axios.post('http://localhost:8000/update/update-users', {
+            name: formData.name,
+            username: formData.username,
+            email: formData.email,
+            contact: formData.contact,
+            address: formData.address,
+            
+        }, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+        console.log(response.data);
+        alert('User Profile Updated successfully Successful on our website');
+        navigate('/Userprofile');
     } catch (err) {
-        const errorMessage = err.response && err.response.data && err.response.data.message
-            ? err.response.data.message
-            : "An unexpected error occurred. Please try again later.";
-        setError(errorMessage);
-        setSuccess('');
-      
-    } finally {
-        setLoading(false); 
+        console.log(err);
+        alert('Updating Failed');
     }
 };
-
 
 
 
@@ -128,7 +167,7 @@ const handleSubmit = async (e) => {
                             />
                         </div>
 
-                        <div className="form-group_Signup">
+                        {/* <div className="form-group_Signup">
                             <label className="label_Signup"><FaLock className="icon_Signup" /><b>Password</b></label>
                             <input
                                 className="input_Signup"
@@ -139,7 +178,7 @@ const handleSubmit = async (e) => {
                                 onChange={handleChange}
                                 required
                             />
-                        </div>
+                        </div> */}
 
                         <div className="form-group_Signup">
                             <label className="label_Signup"><MdEmail className="icon_Signup" /><b>Email:</b></label>
@@ -180,10 +219,10 @@ const handleSubmit = async (e) => {
                         </div>
 
                         <div className="form-group_Signup mt-2">
-                            <button className="button_Signup" type="submit">Signup</button>
+                            <button className="button_Signup" type="submit">Edit</button>
                         </div>
                       
-                        {/* <h4 className="fs-6 text-dark">Already have an account?<Link to="/Login"><u>Login</u></Link> </h4> */}
+                        
                     </form>
                 </div>
             </div>
@@ -191,4 +230,4 @@ const handleSubmit = async (e) => {
     );
 }
 
-export default Signup;
+export default UpdateUser;

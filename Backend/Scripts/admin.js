@@ -12,6 +12,7 @@ const  createAdminAccount = async (req,res)=>{
                 name:"admin",
                 username:"admin",
                 contact:12345678,
+                address:"firozabad",
 
                 
                 password: await bcrypt.hash("admin",10),

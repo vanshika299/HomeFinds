@@ -12,12 +12,13 @@ import Donate from './Components/Donate';
 import ContactUs from './Components/LandingPages/ContactUs';
 import Home from './Components/LandingPages/Home';
 import ProductAdd from './Components/Product/ProductAdd';
+import UpdateProduct from './Components/Product/UpdateProduct';
 import RentPage from './Components/RentPage';
 import Login from './Components/User/Login';
 import Signup from './Components/User/Signup';
+import UpdateUser from './Components/User/UpdateUser';
 import UserProfile from './Components/User/UserProfile';
 import UserType from './Components/User/UserType';
-
 
 function App() {
   const router = createBrowserRouter([
@@ -95,6 +96,14 @@ function App() {
       path:'/RentProducts',
       element:<RentProducts/>
     },
+    {
+      path:'/UpdateUser',
+      element:<UpdateUser/>
+    },
+    {
+      path:'/UpdateProduct/:id',
+      element:<UpdateProduct/>
+    }
   ])
   return (
     <>

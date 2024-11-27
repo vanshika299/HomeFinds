@@ -1,6 +1,3 @@
-
-
-
 const userModel = require('../models/Users'); 
 const bcrypt = require('bcrypt'); 
 const { generateToken } = require('../utils/jwtUtils'); 

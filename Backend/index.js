@@ -5,6 +5,7 @@ const  cors= require("cors");
 const loginRoute=require("./routes/login");
 const {createAdminAccount,getBuyProductCount, getNumberOfUsers}= require("./Scripts/admin");
 const userRoute=require("./routes/users");
+const cookieParser=require("cookie-parser");
 
 
 const app=express();
@@ -19,7 +20,7 @@ app.use(cors());
 createAdminAccount();
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
-
+app.use(cookieParser());
 app.use("/user",signupRoute);
 app.use("/auth",loginRoute);
 app.use("/api",userRoute);

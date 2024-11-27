@@ -4,7 +4,7 @@ const User = require("../models/Users");
 const bcrypt = require("bcrypt");
 
  module.exports.createUser= async(userData)=> {
-    const { username, name, email, contact, password } = userData;
+    const { username, name, email, contact, password,address } = userData;
 
     try {
        
@@ -15,7 +15,8 @@ const bcrypt = require("bcrypt");
             name,
             email,
             contact,
-            password: hashedPassword 
+            password: hashedPassword, 
+            address
         });
 
        

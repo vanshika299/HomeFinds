@@ -17,7 +17,7 @@ module.exports.getUsersById = async (req, res) => {
  
     try {
         const UserId=req.user.id;
-        const userData = await User.findById(UserId);
+        const userData = await User.findById(UserId).populate("products", "productName description price ");
         if (!userData) {
             return res.status(404).json({ message: "User not found" });
         }
@@ -31,33 +31,27 @@ module.exports.getUsersById = async (req, res) => {
 
 
 module.exports.updateUser = async (req, res) => {
-    // const UserId = req.params.id;
-  
-  
     try {
-        const user = await User.findById(req.params.id);
-        if (!user) {
+        const userId = req.user.id;
+        const userData = req.body;
+        if (!userData) {
             return res.status(404).json({ message: "User not found" });
         }
-
-       
-        if (req.body.username) user.username = req.body.username;
-        if(req.body.name) user.name=req.body.name;
-        if (req.body.email) user.email = req.body.email;
-        if(req.body.contact) user.contact=req.body.contact;
-        if (req.body.password) {
-            user.password = await bcrypt.hash(req.body.password, 10);
-        }
-
-        updatedUser = await user.save();
-        res.status(200).json(updatedUser);
+     
+        const users = await User.findByIdAndUpdate
+            (userId, userData, { new: true, runValidators: true });
+       // const updatedUser = await user.save();
+        res.status(200).json(users);
+        
     } catch (error) {
         res.status(400).json({ message: error.message });
     }
 };
+
 module.exports.deleteUser = async (req, res) => {
     try {
-        const user = await User.findByIdAndDelete(req.params.id);
+        await Product.deleteMany({ customer: req.user.id });
+        const user = await User.findByIdAndDelete(req.user.id);
         if (!user) {
             return res.status(404).json({ message: "User not found" });
         }

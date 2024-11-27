@@ -147,3 +147,68 @@ h6 {
 .name{
     font-size: 70px;
 }
+.btn_UserProfile{
+    width:90px;
+    height:50px;
+    display:inline-flex;
+    border-radius: 15px;
+    border:none;
+   
+    padding: 12px 20px;
+    margin-left: 30px;
+}
+.btn_UserProfile:hover{
+    box-shadow: rgba(0, 0, 0, 0.48) 5px 6px 10px 0px;
+    transition:800ms;
+}
+.card-style_UserProfile{
+    width:73%;
+    height:220px;
+    background-color: rgb(223, 177, 93);
+    margin-top:30px;
+    margin-left:180px;
+    border-radius: 20px;
+    padding-left: 30px;
+    padding-top:20px;
+    padding-bottom:20px;
+    box-shadow: rgba(0, 0, 0, 0.48) 5px 6px 10px 0px;
+   margin-bottom:30px;
+}
+
+
+.card-content_UserProfile:hover{
+     font-size: 20px;
+}
+.button_User{
+    
+    border-radius:20px;
+    width:90px;
+    height:50px;
+    
+    box-shadow: rgba(0, 0, 0, 0.48) 5px 6px 10px 0px;
+ 
+    border:none;
+    padding: 12px 20px;
+    margin-left:600px;
+    
+}
+.button2_User{
+    border-radius:20px;
+    width:90px;
+    height:50px;
+    display:inline-flex;
+    box-shadow: rgba(0, 0, 0, 0.48) 5px 6px 10px 0px;
+    border:none;
+    padding: 12px 20px;
+   
+  
+    
+}
+
+.container_User {
+    display: flex;        /* Flexbox to keep buttons in the same line */
+    justify-content: center; /* Center align buttons horizontally */
+    align-items: center; /* Center align vertically */
+         /* Position the container */
+    
+}

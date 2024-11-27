@@ -16,13 +16,13 @@ export default function ContactUs () {
                 </div>
                 <div className="col-md-6">
                     <h5>Phone</h5>
-                    <p>+91 7088894066</p>
+                    <p>+91 8279496397</p>
                 </div>
                 <div className="col-md-12">
                     <h5>Address</h5>
                     <p>Homefinds</p>
-                    <p>HCST</p>
-                    <p>Mathura, Uttar Pradesh</p>
+                    <p>AEC</p>
+                    <p>Agra, Uttar Pradesh</p>
                     <p>281122 , India</p>
                 </div>
             </div>

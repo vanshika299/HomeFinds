@@ -9,7 +9,7 @@ function generateToken(user){
     };
   
     try {
-        return jwt.sign(payload, secretKey, { expiresIn: "1h" });
+        return jwt.sign(payload, secretKey, { expiresIn: "7d" });
     } catch (error) {
         console.error("Error generating token:", error);
         throw new Error("Token generation failed");
