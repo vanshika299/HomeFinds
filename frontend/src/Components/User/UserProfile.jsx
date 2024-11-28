@@ -1,12 +1,13 @@
 
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import '../../CSS/UserProfile.css';
 import user from '../../Images/user.jpg';
 
 
 const UserProfile = () => {
+    const {id } = useParams();
     const navigate = useNavigate();
     const token = localStorage.getItem('token');
     const [users, setUsers] = useState({});
@@ -61,6 +62,26 @@ const UserProfile = () => {
           if (response.status === 200) {
           alert(response.data.message); 
           navigate("/signup"); 
+        }
+        } catch (err) {
+          
+          setError(err.response?.data?.message || "An error occurred");
+        } finally {
+          setLoading(false);
+        }
+      };
+      const handleDel = async (productId) => {
+        try {
+          setLoading(true);
+          setError("");
+           const response = await axios.delete(`http://localhost:8000/delete/deleteProducts/${id}`,{
+            headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            });
+          if (response.status === 200) {
+          alert(response.data.message); 
+          setCards(cards.filter((product) => product._id !== productId));
         }
         } catch (err) {
           
@@ -185,7 +206,7 @@ const UserProfile = () => {
                                 
                                 <div className="container_User">
                                
-                                <button
+                               <Link to={`/UpdateProduct/${id}`}><button
                                                         type="button"
                                                         className="button_User me-2"
                                                         style={{
@@ -194,7 +215,7 @@ const UserProfile = () => {
                                                         }} onClick={()=>handleUpdateProduct(product._id)}
                                                     > 
                                                         <b>Edit</b>
-                                                    </button>
+                                                    </button></Link> 
                                                    
                                 <button
                                                         type="button"
@@ -202,8 +223,8 @@ const UserProfile = () => {
                                                         style={{
                                                             backgroundColor:
                                                                 'white',
-                                                        }} 
-                                                    >
+                                                        }} onClick={()=>handleDel(product._id)}
+                                                    > 
                                                         <b>Delete</b>
                                                     </button>
                                                     </div>

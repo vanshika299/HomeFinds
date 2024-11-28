@@ -15,7 +15,7 @@ const getBuyProductCount=require("../Scripts/admin");
 
 
 router.post("/products",auth.authenticateToken,addProduct.addProduct);
-router.post("/deleteProducts/:id",deleteProduct.deleteProduct);
+router.delete("/deleteProducts/:id",deleteProduct.deleteProduct);
 router.put("/updateProducts/:id", updateProduct.updateProduct);
 router.get("/fetchProducts",fetchAllProducts.fetchAllProducts);
 router.get("/buyProduct",buyProduct.buyProduct);
