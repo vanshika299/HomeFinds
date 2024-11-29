@@ -1,9 +1,36 @@
-import React from 'react';
+import axios from "axios";
+import React, { useEffect, useState } from 'react';
+import { useParams } from "react-router-dom";
 import '../CSS/BuyNow.css';
 import profile from '../Images/profile.jpg';
 import radio from '../Images/radio-removebg-preview.png';
 
-function ProductInfo() {
+function BuyNow() {
+  const { id } = useParams(); // Get product ID from the URL
+    const [product, setProduct] = useState(null);
+
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    useEffect(() => {
+      async function fetchProduct() {
+          try {
+              setLoading(true);
+              const response = await axios.get(`http://localhost:8000/fetch/getProduct/${id}`);
+              console.log("Fetched Product Details:", response.data);
+              setProduct(response.data); // Assume your API returns the product object directly
+              
+          } catch (err) {
+              console.error("Error fetching product details:", err);
+              setError("Failed to fetch product details. Please try again later.");
+          } finally {
+              setLoading(false);
+          }
+      }
+      fetchProduct();
+  }, [id]);
+  if (!product) {
+    return <div>No product details found.</div>;
+}
 
   return (
     <div className='background_BuyNOw'>
@@ -23,15 +50,15 @@ function ProductInfo() {
               <h2 className="text-dark" style={{marginLeft: "3rem"}}><b><u>Radio</u></b></h2>
             </div>
             <div className="data_BuyNow">
-              <h6><b>Brand</b>    : Carvaan</h6>
-              <h6><b>Colour</b>   : Black</h6>
-              <h6><b>Special Feature</b>  :  Portable</h6>
-              <h6><b>Connectivity Technology</b>  :  Bluetooth</h6>
-              <h6><b>Product Dimensions</b>  :  21L x 24W x 7.8H Centimeters</h6>
+              <h6><b>{product.productName}</b></h6>
+              
+              
+              <p><b>Category</b> {product.selectCategory}</p>
+              
             </div>
 
             <div className="Des_BuyNow fs-7 text-dark ">
-              <p><b>Saregama Carvaan Lite Hindi - Portable Music Player with 3000 Pre-Loaded Evergreen Songs, FM/BT/AUX</b></p>
+              <p><b>{product.description}</b></p>
             </div>
           </div>
         </div>
@@ -39,17 +66,16 @@ function ProductInfo() {
 
 
           <div className="price_BuyNow">
-            <h5 className="text-danger fs-4"><b>Rs. 4,990</b></h5>
-            <h6><br />Inclusive of all taxes
-              EMI starts at ₹242. No Cost EMI available.</h6>
+            <h5 className="text-danger fs-4"><b>{product.price}</b></h5>
+            
           </div>
           <hr />
 
           <div className="seller_BuyNow d-flex">
             <img src={profile} className="image_BuyNow" alt="profile" ></img>
             <div className="heading_BuyNow">
-              <h3>Seller</h3>
-              <h5>764583499</h5>
+              <h3>{product.customer?.username}</h3>
+              <p>{product.customer?.address}</p>
             </div>
           </div>
 
@@ -71,5 +97,5 @@ function ProductInfo() {
 
 
 
-export default ProductInfo;
+export default BuyNow;
 

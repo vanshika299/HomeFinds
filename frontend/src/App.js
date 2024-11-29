@@ -32,7 +32,7 @@ function App() {
     },
     
     {
-      path: '/buyNow',
+      path: '/buyNow/:id',
       element: <BuyNow />,
     },
     {

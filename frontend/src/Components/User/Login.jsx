@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaLock, FaUser } from "react-icons/fa";
 import { Link, useNavigate } from 'react-router-dom';
 import "../../CSS/Login.css";
@@ -10,6 +10,7 @@ function Login() {
         password: ''
     });
     const [error, setError] = useState('');
+    const [rememberMe, setRememberMe] = useState(false);
     const [loading, setLoading] = useState(false); 
     const navigate=useNavigate();
 
@@ -20,8 +21,22 @@ function Login() {
             [e.target.name]: e.target.value,
         });
     };
+    useEffect(() => {
+        const savedUsername = localStorage.getItem('username');
+        const savedPassword = localStorage.getItem('password');
+        if (savedUsername) {
+            setFormData({
+                username: savedUsername,
+                password: savedPassword
+            });
+            setRememberMe(true); 
+        }
+    }, []);
 
-   
+    const handleCheckboxChange = (e) => {
+        setRememberMe(e.target.checked);
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true); 
@@ -39,7 +54,13 @@ function Login() {
             const response = await axios.post('http://localhost:8000/auth/login', formData); 
             console.log('Response:', response);
             if (response.data.token) {
-               
+                if (rememberMe) {
+                    localStorage.setItem('username', formData.username);
+                    localStorage.setItem('password', formData.password); // You may choose to store the password as well
+                } else {
+                    localStorage.removeItem('username');
+                    localStorage.removeItem('password');
+                }
                 localStorage.setItem('token', response.data.token); 
                 console.log('Login successful');
                 alert('Login successful');
@@ -96,8 +117,8 @@ function Login() {
                     </div>
                     <div className="box">
                         <label className="label_Login">
-                            <input type="checkbox" style={{ margin: "0 .4rem 0 0" }} />
-                            <b>Remember me</b>
+                            <input type="checkbox" style={{ margin: "0 .4rem 0 0" }} checked={rememberMe} onChange={handleCheckboxChange} />
+                            <b>Remember me</b>   
                         </label>
                     </div>
                     <div className="form-group">

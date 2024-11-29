@@ -33,16 +33,16 @@ function UpdateProduct() {
                         Authorization: `Bearer ${token}`
                     }
                 });
-                console.log("Fetched product data:", response.data);
+                console.log("Fetched product data:", response);
                 
                 setFormData({
-                    productName: response.data.productName || '',
-                    description: response.data.description || '',
-                    productFor: response.data.productFor || '',
-                    price: response.data.price || '',
-                    address: response.data.address || '',
-                    selectCategory: response.data.selectCategory || '',
-                    customer: response.data.customer || '',
+                    productName: response.data.product.productName || '',
+                    description: response.data.product.description || '',
+                    productFor: response.data.product.productFor || '',
+                    price: response.data.product.price || '',
+                    address: response.data.product.address || '',
+                    selectCategory: response.data.product.selectCategory || '',
+                    customer: response.data.product.customer || '',
                 });
             } catch (err) {
                 console.error("Error fetching product details:", err.response?.data || err.message);

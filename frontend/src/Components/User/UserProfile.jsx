@@ -74,14 +74,14 @@ const UserProfile = () => {
         try {
           setLoading(true);
           setError("");
-           const response = await axios.delete(`http://localhost:8000/delete/deleteProducts/${id}`,{
+           const response = await axios.delete(`http://localhost:8000/delete/deleteProducts/${productId}`,{
             headers: {
                 Authorization: `Bearer ${token}`,
               },
             });
           if (response.status === 200) {
           alert(response.data.message); 
-          setCards(cards.filter((product) => product._id !== productId));
+          //setCards(cards.filter((product) => product._id !== productId));
         }
         } catch (err) {
           
@@ -206,7 +206,7 @@ const UserProfile = () => {
                                 
                                 <div className="container_User">
                                
-                               <Link to={`/UpdateProduct/${id}`}><button
+                               <button
                                                         type="button"
                                                         className="button_User me-2"
                                                         style={{
@@ -215,7 +215,7 @@ const UserProfile = () => {
                                                         }} onClick={()=>handleUpdateProduct(product._id)}
                                                     > 
                                                         <b>Edit</b>
-                                                    </button></Link> 
+                                                    </button>
                                                    
                                 <button
                                                         type="button"
